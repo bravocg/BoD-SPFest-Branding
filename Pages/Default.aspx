@@ -8,7 +8,7 @@
 
 <%-- The markup and script in the following Content element will be placed in the <head> of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderAdditionalPageHead" runat="server">
-    <script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.js"></script>
     <meta name="WebPartPageExpansion" content="full" />
@@ -17,22 +17,27 @@
     <link rel="Stylesheet" type="text/css" href="../Content/App.css" />
 
     <!-- Add your JavaScript to the following file -->
+    <%--<script type="text/javascript" src="../Scripts/es6-promise.min.js"></script>--%>
+    <script type="text/javascript" src="../Scripts/es6-promise.auto.min.js"></script>
+    <script type="text/javascript" src="../Scripts/fetch.js"></script>
+    <script type="text/javascript" src="../Scripts/pnp.js"></script>
     <script type="text/javascript" src="../Scripts/App.js"></script>
+
 </asp:Content>
 
 <%-- The markup in the following Content element will be placed in the TitleArea of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderPageTitleInTitleArea" runat="server">
-    Page Title
+    SharePoint Fest Branding Demo
 </asp:Content>
 
 <%-- The markup and script in the following Content element will be placed in the <body> of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">
 
-    <div>
-        <p id="message">
-            <!-- The following content will be replaced with the user name when you run the app - see App.js -->
-            initializing...
-        </p>
-    </div>
+    <button type="button" id="btn1">Apply Custom Action</button>
+    <button type="button" id="btn2">Remove Custom Action</button>
+    <button type="button" id="btn3">Apply AlternateCSS</button>
+    <button type="button" id="btn4">Remove AlternateCSS</button>
+
+    <div id="msg"></div>
 
 </asp:Content>
