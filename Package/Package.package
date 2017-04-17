@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="93d449b6-9080-4990-a101-96791184df02" 
+        solutionId="93d449b6-9080-4990-a101-96791184df02" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="BoD_SPFest_Branding"
+        sharePointProductVersion="16.0">
+  <features>
+        <featureReference itemId="2be36915-28a8-4020-8244-9503b0e580e6" />
+  </features>
+</package>
