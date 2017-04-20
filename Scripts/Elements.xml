@@ -2,7 +2,6 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="Scripts">
     <File Path="Scripts\App.js" Url="Scripts/App.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\es6-promise.min.js" Url="Scripts/es6-promise.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\fetch.js" Url="Scripts/fetch.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery-3.1.1.min.js" Url="Scripts/jquery-3.1.1.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\pnp.js" Url="Scripts/pnp.js" ReplaceContent="TRUE" />

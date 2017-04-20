@@ -3,7 +3,6 @@
   <Files>
     <ProjectItemFile Source="Elements.xml" Target="Scripts\" Type="ElementManifest" />
     <ProjectItemFile Source="App.js" Target="Scripts\" Type="ElementFile" />
-    <ProjectItemFile Source="es6-promise.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="fetch.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="jquery-3.1.1.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="pnp.js" Target="Scripts\" Type="ElementFile" />
