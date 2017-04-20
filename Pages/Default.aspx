@@ -17,7 +17,6 @@
     <link rel="Stylesheet" type="text/css" href="../Content/App.css" />
 
     <!-- Add your JavaScript to the following file -->
-    <%--<script type="text/javascript" src="../Scripts/es6-promise.min.js"></script>--%>
     <script type="text/javascript" src="../Scripts/es6-promise.auto.min.js"></script>
     <script type="text/javascript" src="../Scripts/fetch.js"></script>
     <script type="text/javascript" src="../Scripts/pnp.js"></script>
@@ -38,6 +37,6 @@
     <button type="button" id="btn3">Apply AlternateCSS</button>
     <button type="button" id="btn4">Remove AlternateCSS</button>
 
-    <div id="msg"></div>
+    <div id="msg" style="padding:30px;font-weight:bold;"></div>
 
 </asp:Content>

@@ -16,13 +16,41 @@ $(function () {
                 Relative: "/" + value.replace(/^(?:\/\/|[^\/]+)*\//, "")
             }
         },
-
         hostWebUrl: function () {
             var value = this.getUrlParamByName("SPHostUrl");
             return {
                 Full: value,
                 Relative: "/" + value.replace(/^(?:\/\/|[^\/]+)*\//, "")
             }
+        },
+        // Branding Methods
+        applyBrandingAltCss: function () {
+            // get the current host and app web urls.
+            var hostWebUrl = this.hostWebUrl();
+            var appWebUrl = this.appWebUrl();
+
+            // Upload the file
+            $pnp.sp.web.getFileByServerRelativeUrl(appWebUrl.Relative + "/Content/branding.css").getBuffer().then(function (buffer) {
+                $pnp.sp.crossDomainWeb(appWebUrl.Full, hostWebUrl.Full).getFolderByServerRelativeUrl(hostWebUrl.Relative + "/SiteAssets").files.add("branding.css", buffer, true).then(function (result) {
+                    // Apply AlternateCSS
+                    $pnp.sp.crossDomainWeb(appWebUrl.Full, hostWebUrl.Full).update({ AlternateCssUrl: hostWebUrl.Full + "/SiteAssets/branding.css" }).then(function () {
+                        $("#msg").text("Branding Applied using AlternateCSS!");
+                    });
+                });
+            });
+        },
+        removeBrandingAltCss: function () {
+            // get the current host and app web urls.
+            var hostWebUrl = this.hostWebUrl();
+            var appWebUrl = this.appWebUrl();
+
+            // Remove AlternateCSS
+            $pnp.sp.crossDomainWeb(appWebUrl.Full, hostWebUrl.Full).update({ AlternateCssUrl: "" }).then(function () {
+                // Delete the file
+                $pnp.sp.crossDomainWeb(appWebUrl.Full, hostWebUrl.Full).getFileByServerRelativeUrl(hostWebUrl.Relative + "/SiteAssets/branding.css").delete().then(function () {
+                    $("#msg").text("AlternateCSS has been removed... :(");
+                });
+            });
         },
         applyBrandingCA: function () {
             // get the current host and app web urls.
@@ -71,35 +99,7 @@ $(function () {
                 }
                 // Delete the file
                 $pnp.sp.crossDomainWeb(appWebUrl.Full, hostWebUrl.Full).getFileByServerRelativeUrl(hostWebUrl.Relative + "/SiteAssets/branding.css").delete().then(function () {
-                    $("#msg").text("Branding has been removed... :(");
-                });
-            });
-        },
-        applyBrandingAltCss: function () {
-            // get the current host and app web urls.
-            var hostWebUrl = this.hostWebUrl();
-            var appWebUrl = this.appWebUrl();
-
-            // Upload the file
-            $pnp.sp.web.getFileByServerRelativeUrl(appWebUrl.Relative + "/Content/branding.css").getBuffer().then(function (buffer) {
-                $pnp.sp.crossDomainWeb(appWebUrl.Full, hostWebUrl.Full).getFolderByServerRelativeUrl(hostWebUrl.Relative + "/SiteAssets").files.add("branding.css", buffer, true).then(function (result) {
-                    // Apply AlternateCSS
-                    $pnp.sp.crossDomainWeb(appWebUrl.Full, hostWebUrl.Full).update({ AlternateCssUrl: hostWebUrl.Full + "/SiteAssets/branding.css" }).then(function () {
-                        $("#msg").text("Branding Applied using AlternateCSS!");
-                    });
-                });
-            });
-        },
-        removeBrandingAltCss: function () {
-            // get the current host and app web urls.
-            var hostWebUrl = this.hostWebUrl();
-            var appWebUrl = this.appWebUrl();
-
-            // Remove AlternateCSS
-            $pnp.sp.crossDomainWeb(appWebUrl.Full, hostWebUrl.Full).update({ AlternateCssUrl: "" }).then(function () {
-                // Delete the file
-                $pnp.sp.crossDomainWeb(appWebUrl.Full, hostWebUrl.Full).getFileByServerRelativeUrl(hostWebUrl.Relative + "/SiteAssets/branding.css").delete().then(function () {
-                    $("#msg").text("Branding has been removed... :(");
+                    $("#msg").text("Custom Action has been removed... :(");
                 });
             });
         }
@@ -108,6 +108,6 @@ $(function () {
     // Button events
     $("#btn1").on("click", app.applyBrandingCA.bind(app));
     $("#btn2").on("click", app.removeBrandingCA.bind(app));
-    $("#btn3").on("click", app.removeBrandingAltCss.bind(app));
+    $("#btn3").on("click", app.applyBrandingAltCss.bind(app));
     $("#btn4").on("click", app.removeBrandingAltCss.bind(app));
 });
