@@ -1,8 +1,8 @@
-﻿/** ======================== 0365 Top navigation ==========================================*/
+/** ======================== 0365 Top navigation ==========================================*/
 
 /*Background-color form everything except the waffle icon*/
 .o365cs-base .o365cs-topnavBGColor,
-o365cs-nav-topItem, 
+.o365cs-nav-topItem, 
 .o365cs-base .o365cs-topnavBGColor-2,
 .o365cs-topnavBGColor.o365cs-base, 
 .o365cs-topnavBGColor-2.o365cs-base,
